@@ -12,7 +12,9 @@ const TeacherPollPage = () => {
   const [pollOptions, setPollOptions] = useState([]);
   const [votes, setVotes] = useState({});
   const [totalVotes, setTotalVotes] = useState(0);
-  const navigate = new useNavigate();
+  const navigate = useNavigate();
+  const username = sessionStorage.getItem("username");
+
   useEffect(() => {
     socket.on("pollCreated", (pollData) => {
       setPollQuestion(pollData.question);
@@ -31,13 +33,47 @@ const TeacherPollPage = () => {
     };
   }, []);
 
+  // New effect: Fetch latest poll on mount to handle missed socket events
+  useEffect(() => {
+    const fetchLatestPoll = async () => {
+      if (!username) return; // Skip if no username
+      try {
+        const response = await fetch(`${apiUrl}/polls/${username}`);
+        if (!response.ok) {
+          console.error("Failed to fetch polls");
+          return;
+        }
+        const json = await response.json();
+        const polls = Array.isArray(json) ? json : (json && Array.isArray(json.data) ? json.data : []);
+        if (polls.length > 0) {
+          const latestPoll = polls[polls.length - 1];
+          setPollQuestion(latestPoll.question);
+          setPollOptions(latestPoll.options || []);
+
+          const initialVotes = {};
+          (latestPoll.options || []).forEach((option) => {
+            initialVotes[option.text] = option.votes || 0;
+          });
+          setVotes(initialVotes);
+          setTotalVotes(Object.values(initialVotes).reduce((a, b) => a + b, 0));
+        }
+      } catch (error) {
+        console.error("Error fetching latest poll:", error);
+      }
+    };
+
+    fetchLatestPoll();
+  }, [username]); // Re-run if username changes (unlikely)
+
   const calculatePercentage = (count) => {
     if (totalVotes === 0) return 0;
     return (count / totalVotes) * 100;
   };
+
   const askNewQuestion = () => {
     navigate("/teacher-home-page");
   };
+
   const handleViewPollHistory = () => {
     navigate("/teacher-poll-history");
   };
@@ -48,7 +84,7 @@ const TeacherPollPage = () => {
         className="btn rounded-pill ask-question poll-history px-4 m-2"
         onClick={handleViewPollHistory}
       >
-        <img src={eyeIcon} alt=""/>
+        <img src={eyeIcon} alt="" />
         View Poll history
       </button>
       <br />
