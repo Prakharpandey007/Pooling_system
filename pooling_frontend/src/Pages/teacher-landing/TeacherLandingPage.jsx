@@ -78,6 +78,7 @@ const TeacherLandingPage = () => {
       navigate("/teacher-poll");
     }
   };
+
   const handleViewPollHistory = () => {
     navigate("/teacher-poll-history");
   };

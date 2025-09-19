@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import io from "socket.io-client";
-// import ChatPopover from "../../components/chat/ChatPopover";
+import ChatPopover from "../../components/chat/ChatPopover";
 import { useNavigate } from "react-router-dom";
 import eyeIcon from "../../assets/eye.svg";
 let apiUrl = import.meta.env.VITE_API_BASE_URL;
@@ -112,7 +112,7 @@ const TeacherPollPage = () => {
             Waiting for the teacher to start a new poll...
           </div>
         )}
-        {/* <ChatPopover /> */}
+        <ChatPopover />
       </div>
     </>
   );

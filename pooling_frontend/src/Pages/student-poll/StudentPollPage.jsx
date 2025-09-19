@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import io from "socket.io-client";
 import "./StudentPollPage.css";
 import stopwatch from "../../assets/stopwatch.svg";
-// import ChatPopover from "../../components/chat/ChatPopover";
+import ChatPopover from "../../components/chat/ChatPopover";
 import { useNavigate } from "react-router-dom";
 import stars from "../../assets/spark.svg";
 let apiUrl = import.meta.env.VITE_API_BASE_URL;
@@ -112,7 +112,7 @@ const StudentPollPage = () => {
 
   return (
     <>
-      {/* <ChatPopover /> */}
+      <ChatPopover />
       {kickedOut ? (
         <div>kicked</div>
       ) : (

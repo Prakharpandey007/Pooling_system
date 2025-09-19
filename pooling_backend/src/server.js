@@ -1,37 +1,23 @@
 const express = require("express");
 const cors = require("cors");
+const mongoose = require("mongoose");
 const http = require("http");
-const { Server } = require("socket.io");
+const connectDB=require("./config/database")
 require("dotenv").config();
+const { Server } = require("socket.io");
+const { TeacherLogin } = require("./controllers/login");
+const {
+  createPoll,
+  voteOnOption,
+  getPolls,
+} = require("../src/controllers/poll");
 
-const connectDB = require("./config/database");
-const authRoutes = require("./routes/authRoutes");
-const pollRoutes = require("./routes/pollRoutes");
-const { createPoll, voteOnOption } = require("./controllers/poll");
-
-// Initialize Express
 const app = express();
-
-// Middleware
 app.use(cors());
 app.use(express.json());
-
-// Connect DB
 connectDB();
-
-// Routes
-app.use("/api", authRoutes);
-app.use("/api", pollRoutes);
-
-// Base route
-app.get("/", (req, res) => {
-  res.send("Polling System Backend");
-});
-
-// Create server with socket.io
 const port = process.env.PORT || 3000;
 const server = http.createServer(app);
-
 const io = new Server(server, {
   cors: {
     origin: "*",
@@ -96,7 +82,18 @@ io.on("connection", (socket) => {
   });
 });
 
-// Start server
+app.get("/", (req, res) => {
+  res.send("Polling System Backend");
+});
+
+app.post("/teacher-login", (req, res) => {
+  TeacherLogin(req, res);
+});
+
+app.get("/polls/:teacherUsername", (req, res) => {
+  getPolls(req, res);
+});
+
 server.listen(port, () => {
-  console.log(`🚀 Server running on port ${port}...`);
+  console.log(`Server running on port ${port}...`);
 });
