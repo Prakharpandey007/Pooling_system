@@ -89,7 +89,7 @@ const TeacherPollPage = () => {
       </button>
       <br />
       <div className="container mt-5 w-50">
-        <h3 className="mb-4 text-center">Poll Results</h3>
+        <h3 className="mb-4 text-center">📊 Live Poll Results</h3> 
 
         {pollQuestion && (
           <>
@@ -98,37 +98,39 @@ const TeacherPollPage = () => {
                 <h6 className="question py-2 ps-2 text-left rounded text-white">
                   {pollQuestion} ?
                 </h6>
-                <div className="list-group mt-4">
-                  {pollOptions.map((option) => (
-                    <div
-                      key={option.id}
-                      className="list-group-item rounded m-2"
-                    >
-                      <div className="d-flex justify-content-between align-items-center">
-                        <span>{option.text}</span>
-                        <span>
-                          {Math.round(
-                            calculatePercentage(votes[option.text] || 0)
-                          )}
-                          %
-                        </span>
+                <div className="poll-options-wrapper">
+                  <div className="list-group mt-4">
+                    {pollOptions.map((option) => (
+                      <div
+                        key={option.id}
+                        className="list-group-item rounded m-2"
+                      >
+                        <div className="d-flex justify-content-between align-items-center">
+                          <span>{option.text}</span>
+                          <span className="option-percentage">
+                            {Math.round(
+                              calculatePercentage(votes[option.text] || 0)
+                            )}
+                            %
+                          </span>
+                        </div>
+                        <div className="progress mt-2">
+                          <div
+                            className="progress-bar progress-bar-bg"
+                            role="progressbar"
+                            style={{
+                              width: `${calculatePercentage(
+                                votes[option.text] || 0
+                              )}%`,
+                            }}
+                            aria-valuenow={votes[option.text] || 0}
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                          ></div>
+                        </div>
                       </div>
-                      <div className="progress mt-2">
-                        <div
-                          className="progress-bar progress-bar-bg"
-                          role="progressbar"
-                          style={{
-                            width: `${calculatePercentage(
-                              votes[option.text] || 0
-                            )}%`,
-                          }}
-                          aria-valuenow={votes[option.text] || 0}
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
