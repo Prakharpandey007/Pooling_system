@@ -1,13 +1,53 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./Pages/loginPage/LoginPage";
 import StudentLandingPage from "./Pages/student-landing/StudentLanding";
-
+import StudentProtectedRoute from "./components/route-protect/StudentProtect";
+import TeacherProtectedRoute from "./components/route-protect/TeacherProtect";
+import TeacherLoginPage from "./Pages/teacher-landing/teacherLoginPage";
+import TeacherLandingPage from "./Pages/teacher-landing/TeacherLandingPage";
+import StudentPollPage from "./Pages/student-poll/StudentPollPage";
+import TeacherPollPage from "./Pages/teacher-poll/TeacherPollPage";
+import PollHistoryPage from "./Pages/poll-History/PollHistory";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />} />
+        <Route path="/teacher-login" element={<TeacherLoginPage />} />
+        <Route
+          path="/teacher-home-page"
+          element={
+            <TeacherProtectedRoute>
+              <TeacherLandingPage />
+            </TeacherProtectedRoute>
+          }
+        />
         <Route path="/student-home-page" element={<StudentLandingPage />} />
+
+        <Route
+          path="/poll-question"
+          element={
+            <StudentProtectedRoute>
+              <StudentPollPage />
+            </StudentProtectedRoute>
+          }
+        />
+        <Route
+          path="/teacher-poll"
+          element={
+            <TeacherProtectedRoute>
+              <TeacherPollPage />
+            </TeacherProtectedRoute>
+          }
+        />
+         <Route
+          path="/teacher-poll-history"
+          element={
+            <TeacherProtectedRoute>
+              <PollHistoryPage />
+            </TeacherProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
