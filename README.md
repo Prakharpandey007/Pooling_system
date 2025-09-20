@@ -21,7 +21,10 @@ This project is the backend for a real-time polling system that allows teachers 
 - **Socket.IO** (for real-time communication)
 - **Bootstrap** (for styling)
 - **Session Storage** (for session management)
+- **NodeJs** (for Runtime Enviroment)
+- **ExpressJs** (for Backend Server)
 - **Mongodb** (for database management)
+
 
  
 ## Project Structure
