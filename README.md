@@ -66,7 +66,7 @@ pooling_frontend/
 
 ```
 
-## Installations
+## Installations and Setup :- 
 - Clone the Repository
   ```
   git clone https://github.com/Prakharpandey007/Pooling_system.git
@@ -92,24 +92,30 @@ MONGODB_URI=mongodb://localhost:27017/pooling_System
 VITE_API_BASE_URL=http://localhost:3000  (for local)
 ```
 
-- Start the server
-  ```
-  npm start
-  ```
-- Access the Api
-  ```
-  http://localhost:3000/<abc>
-  ```
 --- 
 
 ## Running the Application
 
-1. The frontend will be available at:
+1)  Start the server
+  ```
+  npm start
+  ```
+2) Access the Api
+  ```
+  http://localhost:3000/<abc>
+  ```
+ 
+3) Run the frontend 
+   ```
+   npm run dev
+   ```
+
+4) The frontend will be available at:
    ```
    http://localhost:5173/
    
    ```
-2. Username for Teacher should start with teacher......
+5) Username for Teacher should start with teacher......
     (example -> teacherprakhar)
 
 ## Contributing
