@@ -106,8 +106,8 @@ VITE_API_BASE_URL=http://localhost:3000  (for local)
    http://localhost:5173/
    
    ```
-2. username for teacher should start with teacher......
-   example -> teacherprakhar
+2. Username for Teacher should start with teacher......
+    (example -> teacherprakhar)
 
 ## Contributing
 Contributions are welcome! If you'd like to contribute to Twitter_Dev Backend, please follow these steps:
