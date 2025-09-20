@@ -1,59 +1,8 @@
-### hosted link **https://pooling-system-1.onrender.com**
-# Polling App - Backend
-
-## Overview
-This project is the backend for a real-time polling system that allows teachers to create live polls and students to participate in them. The backend is built with **Node.js**, **Express.js**, and **MongoDB** for data storage. **Socket.IO** is used for real-time communication.
-
-## Tech Stack
-- **Node.js** (Express.js for server-side logic)
-- **MongoDB** (for database storage)
-- **Socket.IO** (for real-time communication)
+### Hosted link:-  **https://pooling-system-1.onrender.com**
+# Pooling System:- 
+This project is the backend for a real-time polling system that allows teachers to create live polls and students to participate in them. The backend is built with Node.js, Express.js, and MongoDB for data storage. Socket.IO is used for real-time communication.
 
 ---
-
-## Backend Setup
-
-### Prerequisites
-Make sure you have the following installed:
-- Node.js (developed with 22.5.1)
-- npm
-- MongoDB
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Prakharpandey007/Pooling_system/tree/main/pooling_backend
-   cd pooling_backend
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the backend server:
-   ```bash
-   npm run dev
-   ```
-
-## Running the Application
-
-1. The backend will be available at:
-   ```
-   http://localhost:3000
-   https://pooling-system-be0j.onrender.com
-   ```
-
-2. The frontend communicates with the backend via Socket.IO and API endpoints for poll management.
-
-
-
-
-# Polling App - Frontend
-
-## Overview
-This project is a real-time polling system that allows teachers to create live polls and students to participate in them. The frontend is built with **React** (using Vite as the build tool). **Socket.IO** is used for real-time communication between the server and clients.
 
 ## Features
 - **Teacher Features**:
@@ -72,40 +21,103 @@ This project is a real-time polling system that allows teachers to create live p
 - **Socket.IO** (for real-time communication)
 - **Bootstrap** (for styling)
 - **Session Storage** (for session management)
-- **Mongodb ** (for Database management)
+- **Mongodb** (for database management)
 
----
+ 
+## Project Structure
+```
+pooling_backend/
+├── node_modules/
+├── src/
+│   ├── config/
+│   ├── controllers/
+│   ├── models/
+│   └── routes/
+├── server.js
+├── .env
+├── .gitignore
+├── package-lock.json
+└── package.json
 
-## Frontend Setup
+pooling_frontend/
+├── node_modules/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── Pages/
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .env.development
+├── .env.production
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md  
+├── server.js
+└── vite.config.js
 
-### Prerequisites
-Make sure you have the following installed:
-- Node.js (developed with 22.5.1)
-- npm
+```
 
-### Installation
+## Installations
+- Clone the Repository
+  ```
+  git clone https://github.com/Prakharpandey007/Pooling_system.git
+  cd pooling_backend (for backend)
+  cd pooling_frontend (for frontend)
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Prakharpandey007/Pooling_system/tree/main/pooling_frontend
-   cd pooling_frontend
-   ```
+  ```
+- Install Dependencies
+  ```
+  npm install
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+  ```
+- Set Up Enviroment Variables for backend
+```
+PORT=3000
+MONGODB_URI=mongodb://localhost:27017/pooling_System
 
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
+```
+
+- Setup Enviroment Variable for frontend
+
+```
+VITE_API_BASE_URL=http://localhost:3000  (for local)
+```
+
+- Start the server
+  ```
+  npm start
+  ```
+- Access the Api
+  ```
+  http://localhost:3000/<abc>
+  ```
+--- 
 
 ## Running the Application
 
 1. The frontend will be available at:
    ```
    http://localhost:5173/
+   
    ```
 2. username for teacher should start with teacher......
    example -> teacherprakhar
+
+## Contributing
+Contributions are welcome! If you'd like to contribute to Twitter_Dev Backend, please follow these steps:
+
+- Fork the repository.
+- Create a new branch (git checkout -b  add-new-feature).
+- Make your changes.
+- Commit your changes (git commit -m 'Add new feature').
+- Push to the branch (git push origin add-new-feature).
+- Create a new Pull Request.
+
+## License
+ This project is licensed under the MIT License - see the LICENSE file for details.
